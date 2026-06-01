@@ -1,4 +1,5 @@
 import streamlit as st
+import autogen
 from autogen import AssistantAgent
 import os
 import google.generativeai as genai
