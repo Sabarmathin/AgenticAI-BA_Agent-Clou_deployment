@@ -1,5 +1,7 @@
 streamlit
 python-dotenv
+ag2[gemini]
 google-generativeai
 autogen-agentchat
 autogen-ext
+Pillow
