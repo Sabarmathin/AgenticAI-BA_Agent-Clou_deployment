@@ -92,9 +92,16 @@ if st.button("Process Requirements", type="primary"):
         )
         
         # Nested Chat to solve the task
-        def reflection_message(recipient, messages, sender):
-            return f'''Review the following content. 
-                    \n\n {recipient.chat_messages_for_summary(sender)[-1]['content']}'''
+        def reflection_message(sender, recipient, context):
+            try:
+                # AutoGen passes the real agent objects into sender/recipient when using this signature
+                chat_history = recipient.chat_messages_for_summary(sender)
+                last_message_content = chat_history[-1]['content']
+            except (TypeError, KeyError, IndexError):
+                # Fallback if there is no previous chat history context found yet
+                last_message_content = "No previous content found to review."
+
+            return f"Review the following content.\n\n {last_message_content}"
         
         BA_chats = [
             # {
