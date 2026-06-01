@@ -141,4 +141,4 @@ if st.button("Process Requirements", type="primary"):
         
         st.markdown("### 📋 Final Vetted Backlog Output")
         # Grabs the summary text from the final step in the chat pipeline
-        st.markdown(chat_results[-1].summary)
+        st.markdown(chat_results.summary)
