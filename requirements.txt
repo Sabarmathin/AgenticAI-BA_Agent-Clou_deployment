@@ -2,5 +2,6 @@ streamlit
 python-dotenv
 google-generativeai
 pyautogen
+autogen
 autogen-agentchat
 autogen-ext
