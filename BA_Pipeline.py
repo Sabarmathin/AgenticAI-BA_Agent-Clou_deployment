@@ -52,8 +52,8 @@ if st.button("Process Requirements", type="primary"):
             human_input_mode="NEVER",
             is_termination_msg=lambda x: x.get("content", "").find("TERMINATE") >= 0,
             llm_config=llm_config,
-            system_message="You are a BA Manager. You assign the task to each agent to read the requirement document."
-                        " Extract the features in the requirement document "
+            system_message="You are a BA Manager. You assign the task to each agent to read the given requirement."
+                        " Extract the features in the requirement"
                         "Create user stories based on the extracted features "
                         "Write the acceptance criteria for each user stories."
                         "Finally you review the acceptance criteria inline with the requirements",
@@ -62,7 +62,7 @@ if st.button("Process Requirements", type="primary"):
         # Extract features from BRD
         feature_extract_agent = autogen.AssistantAgent(
             name="feature_extract_agent",
-            system_message="You are a Feature extract agent. Extract distinct, atomic features from raw requirements documents BRD.pdf. " 
+            system_message="You are a Feature extract agent. Extract distinct, atomic features from the given raw requirements . " 
                 "Expert at parsing messy text and identifying core business logic.",
             llm_config=llm_config,
         )
@@ -72,9 +72,9 @@ if st.button("Process Requirements", type="primary"):
             name="User_story_agent",
             llm_config=llm_config,
             system_message="You are User story creation agent "
-                "Create the user stories based on the extracted features from the BRD document,"
+                "Create the user stories based on the extracted features from the given requirement,"
                 "Master of the standard format: 'As a [user], I want [action] so that [benefit]'."
-                "Ensure all the requirements mentioned in the BRD are covered in the user stories"
+                "Ensure all the requirements mentioned in the requirement are covered in the user stories"
                 "concrete and to the point."
                 "Begin the creation by stating your role.",
         )
@@ -86,7 +86,7 @@ if st.button("Process Requirements", type="primary"):
             system_message="You are a Acceptance Criteria Agent "
                 "You are ability to create acceptance criteria for each user story"
                 "For each story, provide 2 detailed Acceptance Criteria using Given-When-Then syntax"
-                "You ensure that each point is covered in the user story and inline with the BRD document."
+                "You ensure that each point is covered in the user story and inline with the requirement."
                 "concrete and to the point. "
                 "Begin the creation by stating your role.",
         )
