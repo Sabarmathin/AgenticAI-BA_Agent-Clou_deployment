@@ -5,7 +5,7 @@ import os
 import google.generativeai as genai
 # 1. Page Configuration & UI Layout
 st.set_page_config(page_title="BA Agentic Pipeline", page_icon="", layout="wide")
-st.title("AI Business Analyst Pipeline")
+st.title("The Agentic Business Analyst Pipeline")
 st.subheader("Extract features, generate user stories, and create vetted acceptance criteria.")
 
 # 2. Sidebar Configuration for Credentials
