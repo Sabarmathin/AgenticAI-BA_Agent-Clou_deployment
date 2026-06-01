@@ -139,6 +139,7 @@ if st.button("Process Requirements", type="primary"):
         # Running the agentic system with Streamlit loading indicators
         with st.status("🧠 Agents are analyzing requirements... Please wait.", expanded=True) as status:
             st.write("🏃‍♂️ Dispatching Business Analyst agent to map features...")
+            BA_Manager_Agent.register_nested_chats(BA_chats,trigger=feature_extract_agent,)
             chat_results = BA_Manager_Agent.initiate_chats(BA_chats)
             status.update(label="✅ Pipeline Completed!", state="complete", expanded=False)
 
