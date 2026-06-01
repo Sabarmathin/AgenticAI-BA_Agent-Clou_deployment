@@ -8,4 +8,4 @@ dependencies:
     - streamlit
     - python-dotenv
     - google-generativeai
-    - autogen
+    - pyautogen
