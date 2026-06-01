@@ -141,4 +141,18 @@ if st.button("Process Requirements", type="primary"):
         
         st.markdown("### 📋 Final Vetted Backlog Output")
         # Grabs the summary text from the final step in the chat pipeline
-        st.markdown(chat_results.summary)
+        AC_agent_chat = BA_Manager_Agent.chat_messages[AC_agent]
+        detailed_output = ""
+        for message in reversed(AC_agent_chat):
+            if message.get("role") == "assistant": 
+                # Skip messages sent *to* the PO, we only want responses *from* the PO
+                continue
+            
+            content = message.get("content", "")
+            if content:
+                detailed_output = content
+                break
+        
+        if "TERMINATE" in detailed_output:
+            detailed_output = detailed_output.replace("TERMINATE", "").strip()
+        st.markdown(detailed_output)
