@@ -92,7 +92,7 @@ if st.button("Process Requirements", type="primary"):
         )
         
         # Nested Chat to solve the task
-        def reflection_message(recipient, messages, sender, config):
+        def reflection_message(recipient, messages, sender):
             return f'''Review the following content. 
                     \n\n {recipient.chat_messages_for_summary(sender)[-1]['content']}'''
         
